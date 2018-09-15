@@ -1,0 +1,203 @@
+<!--
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>DEMO</title>
+	<link rel="stylesheet" type="text/css" href="../css/css.css" />
+	<link href="../Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="../Content/jquery.fileupload.css" rel="stylesheet" />
+	<link href="../Content/jquery.validate.css" rel="stylesheet" />
+	&lt;!&ndash;[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]&ndash;&gt;
+	<script src="../js/jquery-3.2.0.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+	&lt;!&ndash;<link rel="stylesheet" href="../css/iconfont.css" />&ndash;&gt;
+
+
+	<script src="../js/kendo/kendo.all.min.js"></script>
+	<script src="../js/kendo/dropdowntreeview.js"></script>
+	<script src="../js/kendo/kendo.chopper.min.js"></script>
+	<script src="../js/kendo/kendo.culture.zh-CN.min.js"></script>
+	<script type="text/javascript" src="../js/kendo/kendo.messages.zh-CN.js" charset="utf-8" ></script>
+	<link rel='stylesheet'   href='../css/kendo/dropdowntreeview.css'/>
+	<link rel='stylesheet'   href='../css/kendo/kendo.common.min.css'/>
+
+	<link rel='stylesheet'   href='../css/kendo/chopper.css'/>
+	<link rel='stylesheet'   href='../css/kendo/kendo.dataviz.metro.min.css'/>
+	<link rel='stylesheet'   href='../css/kendo/kendo.dataviz.min.css'/>
+	<link rel='stylesheet'   href='../css/kendo/kendo.metro.min.css'/>
+
+
+	<link rel="stylesheet" href="../css/bootstrap-table.css" />
+	<script src="../js/bootstrap-table.js"></script>
+	&lt;!&ndash; 汉化文件，放在 bootstrap-table.js 后面 &ndash;&gt;
+	<script src="../js/bootstrap-table-zh-CN.js"></script>
+	<script src="../js/bootstrap-table-export.js"></script>
+
+	&lt;!&ndash;<link rel='stylesheet'   href='../css/pagination.css'/>&ndash;&gt;
+	<script type='text/javascript'   src='../js/jquery.pagination.js' ></script>
+
+	&lt;!&ndash; 引入vue.js &ndash;&gt;
+	<script type='text/javascript'   src='../js/vue.min.js' ></script>
+
+	<style>
+
+	</style>
+
+&lt;!&ndash;	&lt;!&ndash;模态框&ndash;&gt;
+	<link rel="stylesheet" href="../css/jquery.popup.css" />
+	<script src="../js/jquery.popup.js"></script>
+	<script src="../js/jquery.popup.dialog.js"></script>&ndash;&gt;
+
+&lt;!&ndash;	&lt;!&ndash;格式化时间.控制input只能输入金额&ndash;&gt;
+	<script src="../js/until.sdk.format.js"></script>&ndash;&gt;
+
+	&lt;!&ndash;&lt;!&ndash;封装的样式&ndash;&gt;
+	<link rel='stylesheet'   href='../css/table.height.css'/>
+	<style type="text/css">
+
+	</style>&ndash;&gt;
+
+</head>
+<body>
+
+<div id="DropDownTreeView" ></div>
+
+</body>
+
+<script>
+    var datasource = [{
+        "text": "部门",
+        "expanded": true,
+        "id": 0,
+        "items": [
+            {
+                "text": "运营部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-1",
+                "items": [
+                    {
+                        "text": "产品组",
+                        "expanded": true,
+                        "pid": 1,
+                        "comments": "20140821-7",
+                        "items": [],
+                        "id": 7
+                    }
+                ],
+                "id": 1
+            },
+            {
+                "text": "财务部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-2",
+                "items": [],
+                "id": 2
+            },
+            {
+                "text": "行政部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-3",
+                "items": [],
+                "id": 3
+            },
+            {
+                "text": "研发部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-4",
+                "items": [
+                    {
+                        "text": "开发组",
+                        "expanded": true,
+                        "pid": 4,
+                        "comments": "20140821-8",
+                        "items": [],
+                        "id": 8
+                    },
+                    {
+                        "text": "测试组",
+                        "expanded": true,
+                        "pid": 4,
+                        "comments": "20140821-9",
+                        "items": [],
+                        "id": 9
+                    }
+                ],
+                "id": 4
+            },
+            {
+                "text": "运维部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-5",
+                "items": [],
+                "id": 5
+            },
+            {
+                "text": "销售部",
+                "expanded": true,
+                "pid": 0,
+                "comments": "20140821-6",
+                "items": [
+                    {
+                        "text": "售前组",
+                        "expanded": true,
+                        "pid": 6,
+                        "comments": "20140821-10",
+                        "items": [],
+                        "id": 10
+                    },
+                    {
+                        "text": "售后组",
+                        "expanded": true,
+                        "pid": 6,
+                        "comments": "20140821-11",
+                        "items": [],
+                        "id": 11
+                    }
+                ],
+                "id": 6
+            }
+        ]
+    }];
+    var DropDownTreeView = $('#DropDownTreeView').kendoDropDownTreeView({
+        dropDownWidth : '177px',
+        valueField    : 'id',
+        treeview      : {
+            dataSource: datasource
+        }
+    }).data("kendoDropDownTreeView");
+
+    console.log(DropDownTreeView.value());
+
+    // 如果数据是异步获取的，可以这样设置dataSource
+    var datasource = new kendo.data.HierarchicalDataSource({
+		transport: {
+			read:  {
+				url: '/organization/getOrganizationTree',
+				dataType: "json"
+			}
+		},
+		schema: {
+			data: 'data'
+		},
+		requestEnd:  function(e){
+			DropDownTreeView.treeview().setDataSource(e.response.data)
+		}
+		});
+	datasource.read();
+</script>
+
+</html>
+-->
